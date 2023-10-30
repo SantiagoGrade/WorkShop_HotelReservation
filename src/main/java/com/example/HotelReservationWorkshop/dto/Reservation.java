@@ -19,18 +19,27 @@ public class Reservation {
     @Column
     private String reservationCode;
 
+    @Column
+    private double totalPrice;
+
     @ManyToOne()
     @JoinColumn(name= "cliente_Id")
-    private Client client;
+    private Customer customer;
+
+    @OneToMany()
+    @JoinColumn(name = "number_room")
+    private Room room;
 
     public Reservation() {
     }
 
-    public Reservation(Long id, Date reservation_date, String reservationCode, Client client) {
+    public Reservation(Long id, Date reservation_date, String reservationCode, Customer customer, Room room, double totalPrice) {
         this.id = id;
         this.reservation_date = reservation_date;
         this.reservationCode = reservationCode;
-        this.client = client;
+        this.customer = customer;
+        this.room = room;
+        this.totalPrice = totalPrice;
     }
 
     public Long getId() {
@@ -57,11 +66,11 @@ public class Reservation {
         this.reservationCode = reservationCode;
     }
 
-    public Client getClient() {
-        return client;
+    public Customer getClient() {
+        return customer;
     }
 
-    public void setClient(Client client) {
-        this.client = client;
+    public void setClient(Customer customer) {
+        this.customer = customer;
     }
 }

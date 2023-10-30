@@ -3,8 +3,8 @@ package com.example.HotelReservationWorkshop.dto;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "client")
-public class Client {
+@Table(name = "customer")
+public class Customer {
 
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
@@ -22,11 +22,11 @@ public class Client {
     @Column(name="email")
     private String email;
 
-    public Client(){
+    public Customer(){
 
     }
 
-    public Client(Long cedula, String name, String lastName, String address, String email) {
+    public Customer(Long cedula, String name, String lastName, String address, String email) {
         this.cedula = cedula;
         this.name = name;
         this.lastName = lastName;
