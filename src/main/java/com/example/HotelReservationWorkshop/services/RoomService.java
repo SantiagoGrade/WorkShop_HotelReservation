@@ -5,6 +5,7 @@ import com.example.HotelReservationWorkshop.repositories.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -21,6 +22,9 @@ public class RoomService {
     }
 
     public String registerRoom() {
+        registerRoomsPremium();
+        registerRoomsStandar();
+        return "Room registered correctly";
 
     }
 
@@ -56,4 +60,22 @@ public class RoomService {
 
         return registerRoom;
     }
+
+    public List<Room> getRooms() {
+        return repository.findAll();
+    }
+
+    public void deleteRoom(Room room){
+        repository.delete(room);
+    }
+
+    public Room createRoom(Room room) {
+        return repository.save(room);
+    }
+
+    public List<Room> getRoomByType(String type) {
+        return repository.getRoomByType(type);
+    }
+
+
 }
