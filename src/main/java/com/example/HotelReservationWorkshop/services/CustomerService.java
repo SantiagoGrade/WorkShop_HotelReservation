@@ -43,11 +43,11 @@ public class CustomerService {
         return cedulaStr.matches("\\d+");
     }
 
-    private List<Customer> getAll(){
+    public List<Customer> obtainAll() {
         return customerRepository.findAll();
     }
 
-    private Customer getById(Long cedula) {
+    public Customer getById(Long cedula) {
         return customerRepository.getById(cedula);
     }
 }
